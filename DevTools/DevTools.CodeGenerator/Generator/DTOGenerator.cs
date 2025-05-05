@@ -1,20 +1,28 @@
-﻿using System.Diagnostics;
+﻿using DevTools.CodeGenerator.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
-namespace CRM.CodeGenerator.Services;
+namespace DevTools.CodeGenerator.Generator;
 
-public class DTOService : AbstractService
+public class DTOGenerator : IFileGenerator
 {
-    public override void GenerateCode(string caminhoDoArquivo)
+    public DTOGenerator()
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("Iniciando geração de DTO...");
+        Console.ResetColor();
+    }
+
+    public void Generate(string path)
     {
         try
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Iniciando geração de DTO...");
-            Console.ResetColor();
-
-            string filePath = caminhoDoArquivo;
+            string filePath = path;
             if ( !File.Exists(filePath) )
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -98,7 +106,7 @@ public class DTOService : AbstractService
                     attributes.Add($@"[Required(ErrorMessage = ""{propName} é obrigatório"")]");
                 }
 
-                propertiesOutput.AppendLine(string.Join("\n        ", attributes) + $"\n        public {propType} {propName} {{ get; set; }}\n");
+                propertiesOutput.AppendLine(string.Join("\n         ", attributes) + $"\n           public {propType} {propName} {{ get; set; }}\n");
                 propriedadesIncluidas++;
             }
 
@@ -106,14 +114,17 @@ public class DTOService : AbstractService
             dtoContent.AppendLine("using System.ComponentModel.DataAnnotations;");
             dtoContent.AppendLine("using Swashbuckle.AspNetCore.Annotations;");
             dtoContent.AppendLine();
-            dtoContent.AppendLine($"public class {className}DTO");
+            dtoContent.AppendLine("namespace CRM.API.Integracao.DTOs");
             dtoContent.AppendLine("{");
-            dtoContent.AppendLine($@"        [Key]");
-            dtoContent.AppendLine($@"        [SwaggerSchema(Description = ""Chave primária do registro no ERP, esta chave deve identificar de forma única o registro."")]");
-            dtoContent.AppendLine($@"        [Required(ErrorMessage = ""Chave{className} é obrigatório"")]");
-            dtoContent.AppendLine($@"        [MaxLength(60)]");
-             dtoContent.AppendLine($"        public string Chave{className} {{ get; set; }}\n");
+            dtoContent.AppendLine($"    public class {className}DTO");
+            dtoContent.AppendLine("    {");
+            dtoContent.AppendLine($@"           [Key]");
+            dtoContent.AppendLine($@"           [SwaggerSchema(Description = ""Chave primária do registro no ERP, esta chave deve identificar de forma única o registro."")]");
+            dtoContent.AppendLine($@"           [Required(ErrorMessage = ""Chave{className} é obrigatório"")]");
+            dtoContent.AppendLine($@"           [MaxLength(60)]");
+            dtoContent.AppendLine($"           public string Chave{className} {{ get; set; }}\n");
             dtoContent.Append(propertiesOutput);
+            dtoContent.AppendLine("     }");
             dtoContent.AppendLine("}");
 
             string tempPath = Path.Combine(Path.GetTempPath(), $"{className}DTO.cs");
