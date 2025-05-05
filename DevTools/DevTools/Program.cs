@@ -1,28 +1,34 @@
 ﻿using DevTools.Data;
 using DevTools.Model;
 using DevTools.Utils.exceptions;
+using DevTools.Views;
 
 namespace DevTools;
 
 internal class Program
 {
-    static AppConfiguration _appConfiguration;
-
     static void Main(string[] args)
     {
-        _appConfiguration = new AppConfiguration();
-        AppConfigurationUtils.ValidarOuSolicitarBranch(_appConfiguration);
+        AppConfiguration.Init();
+
+        if (AppConfiguration.Instance["CurrentBranch"] == null)
+        {
+            Console.Clear();
+            MainView.DisplayMainHeader();
+            AppConfigurationUtils.ValidarOuSolicitarBranch(AppConfiguration.Instance);
+        }
 
         bool Sair = false;
 
         while ( !Sair )
         {
             Console.Clear();
-            AppConfigurationUtils.DisplayMainHeader();
+            MainView.DisplayMainHeader();
+            MainView.DisplayConfigurations();
 
             if ( args.Length == 0 )
             {
-                ExibirModoDeUso();
+                MainView.ExibirModoDeUso();
             }
             else
             {
@@ -36,19 +42,21 @@ internal class Program
                     else
                     {
                         Console.WriteLine("Argumento inválido: '" + comando + "'");
-                        ExibirModoDeUso();
+                        MainView.ExibirModoDeUso();
                     }
                 }
                 catch ( ExitException )
                 {
                     Console.Title = "DevTools";
                     Console.Clear();
-                    AppConfigurationUtils.DisplayMainHeader();
-                    ExibirModoDeUso();
+                    MainView.DisplayMainHeader();
+                    MainView.ExibirModoDeUso();
                 }
                 catch ( Exception e )
                 {
-                    Console.Error.WriteLine($"ERRO: {e}");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"ERRO: {e}");
+                    Console.ResetColor();
                     throw;
                 }
             }
@@ -61,35 +69,7 @@ internal class Program
         }
     }
 
-    static void ExibirModoDeUso()
-    {
-        Console.WriteLine();
-        Console.WriteLine("Argumentos disponíveis:");
-
-        // 1. Calcular o tamanho do alinhamento do primeiro alias
-        int alignCol = MockData.MainMenuOptions.Max(c => c.Aliases.Length == 1 ? 0 : c.Aliases[0].Length) + 2;
-
-        // 2. Gerar todos os textos de alias formatados
-        var aliasFormatados = MockData.MainMenuOptions
-            .Select(c => c.GetAliasFormatted(alignCol))
-            .ToList();
-
-        // 3. Calcular o comprimento máximo da parte do aliasFormatado (para alinhar a descrição)
-        int maxAliasLength = aliasFormatados.Max(a => a.Length) + 4; // Espaço entre alias e descrição
-
-        for ( int i = 0; i < MockData.MainMenuOptions.Count; i++ )
-        {
-            var alias = aliasFormatados[i];
-            var descricao = MockData.MainMenuOptions[i].Descricao;
-            string padding = new string(' ', maxAliasLength - alias.Length);
-
-            Console.WriteLine($"             {alias}{padding}-{descricao}");
-        }
-
-        Console.WriteLine();
-        Console.WriteLine("Exemplo de uso: dotnet run <nome do comando> <argumento para o comando> <...>");
-        Console.WriteLine();
-    }
+    
 
 
 }

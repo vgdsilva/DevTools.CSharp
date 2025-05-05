@@ -19,6 +19,11 @@ public class AppConfiguration
         }
     }
 
+    public static void Init()
+    {
+        _instance = new AppConfiguration();
+    }
+
 
     private static readonly string _caminhoArquivo = Path.Combine(AppContext.BaseDirectory, "appsettings.json");
     private JsonObject _configJson;

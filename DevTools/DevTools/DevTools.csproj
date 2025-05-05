@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Model\**" />
+    <EmbeddedResource Remove="Model\**" />
+    <None Remove="Model\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DevTools.CodeGenerator\DevTools.CodeGenerator.csproj" />
     <ProjectReference Include="..\DevTools.Utils\DevTools.Utils.csproj" />
   </ItemGroup>

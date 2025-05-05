@@ -11,9 +11,6 @@ public class AppConfigurationUtils
 {
     public static void ValidarOuSolicitarBranch(AppConfiguration config)
     {
-        Console.Clear();
-        DisplayMainHeader();
-
         var currentBranch = config["CurrentBranch"];
 
         while ( string.IsNullOrWhiteSpace(currentBranch) || !BranchValida(currentBranch) )
@@ -52,16 +49,5 @@ public class AppConfigurationUtils
         return pastasObrigatorias.All(pasta => Directory.Exists(Path.Combine(caminho, pasta)));
     }
 
-    public static void DisplayMainHeader()
-    {
-        Console.WriteLine(@"    ___              _____               _      ");
-        Console.WriteLine(@"   /   \ ___ __   __/__   \ ___    ___  | | ___ ");
-        Console.WriteLine(@"  / /\ // _ \\ \ / /  / /\// _ \  / _ \ | |/ __|");
-        Console.WriteLine(@" / /_//|  __/ \ V /  / /  | (_) || (_) || |\__ \");
-        Console.WriteLine(@"/___,'  \___|  \_/   \/    \___/  \___/ |_||___/");
-        Console.WriteLine("               aliare | o campo sem fronteiras_  ");
-        Console.WriteLine();
-        Console.WriteLine("[ !] Atenção! Você está executando a ferramenta de desenvolvimento");
-        Console.WriteLine();
-    }
+    
 }
