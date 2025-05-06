@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DevTools.TraducoesMAUI.Windows.TrdzListWindow">
+    
+    <Grid RowDefinitions="Auto, Auto, *">
+        <Grid Padding="16" BackgroundColor="#5BAF00">
+            <Label Text="Tradução" TextColor="White" />
+        </Grid>
+
+        <Grid Grid.Row="1" Padding="16" RowDefinitions="Auto,30" RowSpacing="8" ColumnDefinitions="*, 125, 125" ColumnSpacing="25">
+            <Label Text="Pesquisar" FontSize="12" />
+            <Entry Grid.Row="1" FontSize="12" MinimumHeightRequest="20" MaximumHeightRequest="30"/>
+            <Label Grid.Row="1" Grid.Column="1" Text="Buscar" FontSize="14" BackgroundColor="Transparent" Scale="0.9" TextColor="#5BAF00" VerticalOptions="Center"/>
+            <Label Grid.Row="1" Grid.Column="2" Text="Adicionar Tag" FontSize="14" BackgroundColor="Transparent" Scale="0.9" TextColor="#5BAF00"/>
+        </Grid>
+
+        <Grid Grid.Row="2" >
+            
+        </Grid>
+    </Grid>
+</ContentPage>

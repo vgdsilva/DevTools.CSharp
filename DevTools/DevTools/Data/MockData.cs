@@ -1,4 +1,5 @@
 ﻿using DevTools.Utils.Models;
+using DevTools.Views;
 
 namespace DevTools.Data;
 
@@ -19,10 +20,10 @@ public static class MockData
         new MenuOption(
             new[] { "trdz", "traducoes" }, 
             "Geração ou manipulação das traduções", 
-            (args) => { throw new NotImplementedException(); }
+            (args) => TraducoesView.Show()
         ),
         new MenuOption(
-            new[] { "sair" }, 
+            "sair", 
             "Encerra este prompt", 
             args => Environment.Exit(0)
         ),

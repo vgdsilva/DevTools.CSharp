@@ -12,6 +12,14 @@ public class MenuOption
         Descricao = descricao;
         Acao = acao;
     }
+    
+    
+    public MenuOption(string aliases, string descricao, Action<string[]> acao)
+    {
+        Aliases = new string[] { aliases };
+        Descricao = descricao;
+        Acao = acao;
+    }
 
     public string GetAliasFormatted(int alignCol)
     {

@@ -9,13 +9,13 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        AppConfiguration.Init();
+        Configuration.Init();
 
-        if (AppConfiguration.Instance["CurrentBranch"] == null)
+        if (Configuration.Instance["CurrentBranch"] == null)
         {
             Console.Clear();
             MainView.DisplayMainHeader();
-            AppConfigurationUtils.ValidarOuSolicitarBranch(AppConfiguration.Instance);
+            ConfigurationUtils.ValidarOuSolicitarBranch(Configuration.Instance);
         }
 
         bool Sair = false;

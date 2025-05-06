@@ -3,17 +3,17 @@ using System.Text.Json.Nodes;
 
 namespace DevTools.Model;
 
-public class AppConfiguration
+public class Configuration
 {
-    private static AppConfiguration? _instance;
+    private static Configuration? _instance;
 
-    public static AppConfiguration Instance
+    public static Configuration Instance
     {
         get
         {
             if ( _instance == null )
             {
-                _instance = new AppConfiguration();
+                _instance = new Configuration();
             }
             return _instance;
         }
@@ -21,7 +21,7 @@ public class AppConfiguration
 
     public static void Init()
     {
-        _instance = new AppConfiguration();
+        _instance = new Configuration();
     }
 
 
@@ -39,7 +39,7 @@ public class AppConfiguration
         }
     }
 
-    public AppConfiguration()
+    public Configuration()
     {
         Carregar();
     }

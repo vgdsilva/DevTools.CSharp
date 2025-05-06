@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace DevTools.Data;
 
-public class AppConfigurationUtils
+public class ConfigurationUtils
 {
-    public static void ValidarOuSolicitarBranch(AppConfiguration config)
+    public static void ValidarOuSolicitarBranch(Configuration config)
     {
         var currentBranch = config["CurrentBranch"];
 

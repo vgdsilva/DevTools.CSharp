@@ -27,7 +27,7 @@ public class MainView
 
     public static void DisplayConfigurations()
     {
-        AppConfiguration config = new AppConfiguration();
+        Configuration config = new Configuration();
         Console.WriteLine($"[!] Branch atual: {config["CurrentBranch"]}");
     }
 
