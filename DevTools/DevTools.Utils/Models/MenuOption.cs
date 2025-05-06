@@ -21,6 +21,11 @@ public class MenuOption
         Acao = acao;
     }
 
+    public static MenuOption InstanceNew(Action<string[]> acao, string descricao, params string[] aliases)
+    {
+        return new MenuOption(aliases, descricao, acao);
+    }
+
     public string GetAliasFormatted(int alignCol)
     {
         string left = ""; // Antes do '|'

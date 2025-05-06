@@ -25,6 +25,12 @@ public class TraducoesView
             UseShellExecute = true
         });
 
+
+        using (Process mauiProcessStart = Process.Start(mauiProjectPath))
+        {
+            mauiProcessStart.WaitForInputIdle();
+        }
+
         Console.WriteLine("[ !] Executando ferramenta de traduções");
         Thread.Sleep(2000);
 

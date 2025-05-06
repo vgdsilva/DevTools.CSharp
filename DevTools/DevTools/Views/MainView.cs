@@ -37,23 +37,23 @@ public class MainView
         Console.WriteLine("Argumentos disponíveis:");
 
         // 1. Calcular o tamanho do alinhamento do primeiro alias
-        int alignCol = MockData.MainMenuOptions.Max(c => c.Aliases.Length == 1 ? 0 : c.Aliases[0].Length) + 2;
+        int alignCol = MockData.MainOptions.Max(c => c.Aliases.Length == 1 ? 0 : c.Aliases[0].Length) + 2;
 
         // 2. Gerar todos os textos de alias formatados
-        var aliasFormatados = MockData.MainMenuOptions
+        var aliasFormatados = MockData.MainOptions
             .Select(c => c.GetAliasFormatted(alignCol))
             .ToList();
 
         // 3. Calcular o comprimento máximo da parte do aliasFormatado (para alinhar a descrição)
         int maxAliasLength = aliasFormatados.Max(a => a.Length) + 4; // Espaço entre alias e descrição
 
-        for ( int i = 0; i < MockData.MainMenuOptions.Count; i++ )
+        for ( int i = 0; i < MockData.MainOptions.Count; i++ )
         {
             var alias = aliasFormatados[i];
-            var descricao = MockData.MainMenuOptions[i].Descricao;
+            var descricao = MockData.MainOptions[i].Descricao;
             string padding = new string(' ', maxAliasLength - alias.Length);
 
-            Console.WriteLine($"             {alias}{padding}-{descricao}");
+            Console.WriteLine($"       {alias} {padding} - {descricao}");
         }
 
         Console.WriteLine();
