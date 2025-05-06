@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevTools.Utils;
+namespace DevTools.Utils.Helpers;
 
 public class AssemblyHelper
 {

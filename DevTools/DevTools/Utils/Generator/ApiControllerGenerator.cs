@@ -1,4 +1,4 @@
-﻿using DevTools.Core.Interfaces;
+﻿using DevTools.Utils.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevTools.Core.Generator;
+namespace DevTools.Utils.Generator;
 
 public class ApiControllerGenerator : IFileGenerator
 {

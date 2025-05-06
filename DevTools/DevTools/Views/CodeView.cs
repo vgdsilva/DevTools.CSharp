@@ -1,24 +1,15 @@
-﻿using DevTools.Core.Generator;
-using DevTools.Core.Interfaces;
-using DevTools.Utils.exceptions;
+﻿using DevTools.Utils.exceptions;
+using DevTools.Utils.Interfaces;
+using DevTools.Utils.Generator;
 
-namespace DevTools.CodeGenerator;
-
-internal class Program
-{
-    static void Main(string[] args) => Initialize.Start(args);
-
-}
-
-public class Initialize
+namespace DevTools.Views;
+public class CodeView
 {
     /// args: <code|geradorDeCodigo> <nome do comando> <argumento para o comando>
-    public static void Start(string[] args)
+    public static void Show(string[] args)
     {
         bool shouldExit = false;
         bool isFirstExecution = true;
-
-        Console.Title = "DevTools - Gerador de Código";
 
         var commands = InitializeCommands();
 
@@ -106,16 +97,14 @@ public class Initialize
 
     static void DisplayHeader()
     {
-        Console.WriteLine(@"
-        ___              _____               _                  ___            _           ___                                _               
-       /   \ ___ __   __/__   \ ___    ___  | | ___            / __\ ___    __| |  ___    / _ \ ___  _ __    ___  _ __  __ _ | |_  ___   _ __ 
-      / /\ // _ \\ \ / /  / /\// _ \  / _ \ | |/ __|  _____   / /   / _ \  / _` | / _ \  / /_\// _ \| '_ \  / _ \| '__|/ _` || __|/ _ \ | '__|
-     / /_//|  __/ \ V /  / /  | (_) || (_) || |\__ \ |_____| / /___| (_) || (_| ||  __/ / /_\\|  __/| | | ||  __/| |  | (_| || |_| (_) || |   
-    /___,'  \___|  \_/   \/    \___/  \___/ |_||___/         \____/ \___/  \__,_| \___| \____/ \___||_| |_| \___||_|   \__,_| \__|\___/ |_|   
-                                                                                                                                          
-            ");
+        Console.WriteLine(@"    ___              _____               _      ");
+        Console.WriteLine(@"   /   \ ___ __   __/__   \ ___    ___  | | ___ ");
+        Console.WriteLine(@"  / /\ // _ \\ \ / /  / /\// _ \  / _ \ | |/ __|");
+        Console.WriteLine(@" / /_//|  __/ \ V /  / /  | (_) || (_) || |\__ \");
+        Console.WriteLine(@"/___,'  \___|  \_/   \/    \___/  \___/ |_||___/");
+        Console.WriteLine("               Aliare | o campo sem fronteiras_  ");
         Console.WriteLine();
-        Console.WriteLine("[ !] Atenção! Você está executando a ferramenta de desenvolvimento para geração de codigo");
+        Console.WriteLine("[ !] Atenção! Você está executando a ferramenta de desenvolvimento para geração de código");
         Console.WriteLine();
     }
 
@@ -123,10 +112,10 @@ public class Initialize
     {
         Console.WriteLine();
         Console.WriteLine("Argumentos disponíveis:");
-        Console.WriteLine("            e|entidade       <caminho(s)|nome(s) da(s) entidade(s)>           - Se possuir o caminho ira gerar todos os arquivos abaixo senão ira criar uma entidade do zero");
+        Console.WriteLine("            e|entidade       <nome(s) da(s) entidade(s)>           - Se possuir o caminho ira gerar todos os arquivos abaixo senão ira criar uma entidade do zero");
         Console.WriteLine("             |bo             <nome(s) da(s) entidade(s)>                      - Gera o arquivo BO básico a partir do nome da entidade");
         Console.WriteLine("             |dao            <nome(s) da(s) entidade(s)>                      - Gera o arquivo DAO básico a partir do nome da entidade");
-        Console.WriteLine("             |dto            <caminho do(s) arquivo(s) da(s) entidade(s)>     - Gera DTO a partir de um arquivo de entidade");
+        Console.WriteLine("             |dto            <nome(s) da(s) entidade(s)>     - Gera DTO a partir de um arquivo de entidade");
         Console.WriteLine("           ac|api-controller <nome(s) da(s) entidade(s)>                      - Gera o arquivo Controller básico a partir do nome da entidade");
         Console.WriteLine("            v|voltar                                                          - Encerra este prompt e volta para a tela principal");
         Console.WriteLine();
@@ -139,7 +128,7 @@ public class Initialize
         if ( args.Length < 3 )
             throw new Exception("Uso: dotnet run code <e|entidade> <caminho(s)|nome(s) da(s) entidade(s)>");
 
-        
+
 
         // Dicionário para mapear as ações
         //Dictionary<string, Action<string[]>> process = new Dictionary<string, Action<string[]>>

@@ -1,15 +1,10 @@
-﻿using DevTools.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DevTools.Data.Context;
 
-namespace DevTools.Utils;
+namespace DevTools.Utils.Classes;
 
 public class CloverPaths
 {
-    public static string MainDirectoryPath = Configuration.Instance["CurrentBranch"];
+    public static string MainDirectoryPath = Contexto.Instance.CurrentBranch;
 
     // REGRAS FOLDER
     public static string RegrasFolderPath = Path.Combine(MainDirectoryPath, "regras", "CRM.Comum");

@@ -1,4 +1,4 @@
-﻿using DevTools.Core.Interfaces;
+﻿using DevTools.Utils.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace DevTools.Core.Generator;
+namespace DevTools.Utils.Generator;
 
 public class DTOGenerator : IFileGenerator
 {
@@ -91,7 +91,7 @@ public class DTOGenerator : IFileGenerator
                     continue;
 
                 bool isNullable = propType.EndsWith("?");
-                bool isCustomEntity = Char.IsUpper(propType[0]) && !propType.StartsWith("string");
+                bool isCustomEntity = char.IsUpper(propType[0]) && !propType.StartsWith("string");
 
                 if ( originalPropName.Contains("ID") )
                 {

@@ -1,7 +1,7 @@
-﻿using DevTools.Core.Interactive;
-using DevTools.Core.Interfaces;
+﻿using DevTools.Utils.Interactive;
+using DevTools.Utils.Interfaces;
 
-namespace DevTools.Core.Generator;
+namespace DevTools.Utils.Generator;
 
 public class EntityGenerator : IFileGenerator
 {

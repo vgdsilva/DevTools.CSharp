@@ -1,8 +1,8 @@
-﻿using DevTools.Utils;
+﻿using DevTools.Utils.Classes;
 using DevTools.Utils.exceptions;
 using System.Diagnostics;
 
-namespace DevTools.Executables;
+namespace DevTools.Utils.Executables;
 
 public static class CRMSyncExecute
 {

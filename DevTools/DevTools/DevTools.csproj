@@ -19,8 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DevTools.CodeGenerator\DevTools.CodeGenerator.csproj" />
-    <ProjectReference Include="..\DevTools.Utils\DevTools.Utils.csproj" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
   </ItemGroup>
 
   <ItemGroup>

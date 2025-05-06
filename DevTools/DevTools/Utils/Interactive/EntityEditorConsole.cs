@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DevTools.Core.Interactive
+namespace DevTools.Utils.Interactive
 {
     public class EntityEditorConsole
     {

@@ -1,4 +1,5 @@
 ﻿using DevTools.Data;
+using DevTools.Data.Context;
 using DevTools.Model;
 
 namespace DevTools.Views;
@@ -9,7 +10,7 @@ public class MainView
     {
         Console.Clear();
         DisplayMainHeader();
-        DisplayConfigurations();
+        DisplayCurrentBranch();
     }
 
     public static void DisplayMainHeader()
@@ -25,13 +26,12 @@ public class MainView
         Console.WriteLine();
     }
 
-    public static void DisplayConfigurations()
+    public static void DisplayCurrentBranch()
     {
-        Configuration config = new Configuration();
-        Console.WriteLine($"[!] Branch atual: {config["CurrentBranch"]}");
+        Console.WriteLine($"[!] Branch atual: {Contexto.Instance.CurrentBranch}");
     }
 
-    public static void ExibirModoDeUso()
+    public static void DisplayAvailableArguments()
     {
         Console.WriteLine();
         Console.WriteLine("Argumentos disponíveis:");

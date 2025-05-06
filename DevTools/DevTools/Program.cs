@@ -1,5 +1,5 @@
 ﻿using DevTools.Data;
-using DevTools.Model;
+using DevTools.Data.Context;
 using DevTools.Utils.exceptions;
 using DevTools.Views;
 
@@ -9,14 +9,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        Configuration.Init();
-
-        if (Configuration.Instance["CurrentBranch"] == null)
-        {
-            Console.Clear();
-            MainView.DisplayMainHeader();
-            ConfigurationUtils.ValidarOuSolicitarBranch(Configuration.Instance);
-        }
+        Contexto.AssignNewInstance();
 
         bool Sair = false;
 
@@ -24,11 +17,11 @@ internal class Program
         {
             Console.Clear();
             MainView.DisplayMainHeader();
-            MainView.DisplayConfigurations();
+            MainView.DisplayCurrentBranch();
 
             if ( args.Length == 0 )
             {
-                MainView.ExibirModoDeUso();
+                MainView.DisplayAvailableArguments();
             }
             else
             {
@@ -42,7 +35,7 @@ internal class Program
                     else
                     {
                         Console.WriteLine("Argumento inválido: '" + comando + "'");
-                        MainView.ExibirModoDeUso();
+                        MainView.DisplayAvailableArguments();
                     }
                 }
                 catch ( ExitException )
@@ -50,7 +43,7 @@ internal class Program
                     Console.Title = "DevTools";
                     Console.Clear();
                     MainView.DisplayMainHeader();
-                    MainView.ExibirModoDeUso();
+                    MainView.DisplayAvailableArguments();
                 }
                 catch ( Exception e )
                 {

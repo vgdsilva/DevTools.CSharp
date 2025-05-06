@@ -1,8 +1,8 @@
-﻿using DevTools.Core.Interfaces;
+﻿using DevTools.Utils.Interfaces;
 using System.Diagnostics;
 using System.Text;
 
-namespace DevTools.Core.Generator;
+namespace DevTools.Utils.Generator;
 
 public class DAOGenerator : IFileGenerator
 {
