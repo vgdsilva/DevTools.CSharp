@@ -5,7 +5,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <ApplicationIcon>layer.ico</ApplicationIcon>
+    <ApplicationIcon>coding.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,14 +15,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="layer.ico" />
+    <Content Include="coding.ico" />
   </ItemGroup>
 
   <ItemGroup>
+	  <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.4" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.4" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="9.0.4" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.4" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
   </ItemGroup>
 
   <ItemGroup>

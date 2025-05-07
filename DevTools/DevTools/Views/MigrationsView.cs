@@ -11,7 +11,7 @@ public class MigrationsView
         Console.WriteLine("[ !] Executando ferramenta de geração de migrations.");
         Console.WriteLine();
 
-        bool isPostgreSQLMigration = InteractiveYesNoPrompt.Ask(
+        bool isPostgreSQLMigration = InteractiveBoolPrompt.Ask(
             "Para qual banco de dados deseja gerar a migration?",
             "PostgreSQL",
             "SQLite"

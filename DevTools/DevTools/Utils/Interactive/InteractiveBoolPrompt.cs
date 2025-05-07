@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DevTools.Utils.Interactive;
-public static class InteractiveYesNoPrompt
+public static class InteractiveBoolPrompt
 {
     public static bool Ask(string question, string yesOptionDescription = "Yes", string noOptionDescription = "No", bool sameLine = true)
     {
-        string[] opcoes = { yesOptionDescription ?? "Yes", noOptionDescription ?? "No" };
+        string[] opcoes = { yesOptionDescription, noOptionDescription };
         int selected = 0; // 0 = Yes, 1 = No
         ConsoleKey key;
 
